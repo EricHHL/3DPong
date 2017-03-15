@@ -1,9 +1,12 @@
 local ResourceManager = {}
 
+local objLoader = require("lib.obj_loader")
+
 local resources = {}
 
 ResourceManager.textureFolder = "textures"
 ResourceManager.scenesFolder = "scenes"
+ResourceManager.modelsFolder = "modelos"
 
 local creatorFunctions = {
 	texture = function(name)
@@ -37,6 +40,9 @@ local creatorFunctions = {
 	end,
 	scene = function(name)
 		return require(ResourceManager.scenesFolder.."."..name)
+	end,
+	model = function(name)
+		return objLoader.load(ResourceManager.modelsFolder.."/"..name..".obj")
 	end
 }
 
@@ -68,6 +74,11 @@ end})
 ResourceManager.scene = {}
 setmetatable(ResourceManager.scene, {__index = function(_, a)
 	return ResourceManager.get("scene", a)
+end})
+
+ResourceManager.model = {}
+setmetatable(ResourceManager.model, {__index = function(_, a)
+	return ResourceManager.get("model", a)
 end})
 
 return ResourceManager

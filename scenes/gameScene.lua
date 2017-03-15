@@ -20,6 +20,8 @@ function gameScene:init()
 
 	graphics3D.centro = Vector2(love.graphics.getWidth()/2, love.graphics.getHeight()/2)
 
+	teste = Coisa("testeMesh", {Pos3D(Vector3(00,00,100)), Mesh(R.model.bola)})
+
 	paredes = Coisa("paredes", {Wall({size = gameZ})})
 	ball = Coisa("ball", {
 		Pos3D(Vector3(love.graphics.getWidth()/2, love.graphics.getHeight()/2, gameZ/2)),
@@ -44,6 +46,21 @@ function gameScene:init()
 
 end
 
+function gameScene:update(dt)
+	if love.keyboard.isDown("w") then
+		teste.pos.y = teste.pos.y - 100 *dt
+	end
+	if love.keyboard.isDown("s") then
+		teste.pos.y = teste.pos.y + 100 *dt
+	end
+	if love.keyboard.isDown("a") then
+		teste.pos.x = teste.pos.x - 100 *dt
+	end
+	if love.keyboard.isDown("d") then
+		teste.pos.x = teste.pos.x + 100 *dt
+	end
+
+end
 
 
 return gameScene

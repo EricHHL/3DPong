@@ -28,4 +28,9 @@ function Vector3.__mul(a,b)
 	return new(a.x*b, a.y*b, a.z*b)
 end
 
+function Vector3.dot(a,b)
+	return (a.x*b.x + a.y*b.y + a.z*b.z)
+end
+
+
 setmetatable(Vector3, {__call = function(_, ...) return new(...) end})

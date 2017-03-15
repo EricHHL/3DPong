@@ -9,6 +9,8 @@ local escala = 200
 function graphics3D:drawAfter()
 	--graphics3D
 
+	graphics3D.camera = Vector3(graphics3D.centro.x, graphics3D.centro.y, 0)
+
 	table.sort( graphics3D.drawList, function(a,b) return a.z > b.z end )
 
 	for k,v in pairs(graphics3D.drawList) do

@@ -12,9 +12,9 @@ function ballController:update(b, dt)
 		b.pos.y = clamp(b.pos.y, b.ball.size, lg.getHeight()-b.ball.size)
 	end
 
-	if b.pos.z<b.ball.size  or b.pos.z>b.ball.wall.size-b.ball.size then
+	if b.pos.z<0  or b.pos.z>b.ball.wall.size-b.ball.size then
 		b.ball.direction.z = -b.ball.direction.z
-		b.pos.z = clamp(b.pos.z, b.ball.size, b.ball.wall.size-b.ball.size)
+		b.pos.z = clamp(b.pos.z, 0, b.ball.wall.size-b.ball.size)
 	end
 
 	b.pos = b.pos + b.ball.direction*b.ball.speed*dt
